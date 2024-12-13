@@ -36,6 +36,12 @@ npm i
 npm run dev
 ````
 
+npm install -D vitest
+
+
+
+
+
 ## Evidencia del proyecto
 
 Metodo Get para obtener todo los usuarios
