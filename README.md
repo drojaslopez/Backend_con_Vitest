@@ -1,4 +1,4 @@
-# hito_2_Backend_Node_Express
+# hito_3_Backend_Node_Express
 ## Daniel_Rojas
 
 Para ejecutar el projecto inicialmente se debe levantar primero el contenedor de docker
@@ -12,6 +12,7 @@ con el contenedor andando debemos levantar la bd
 docker ps
 
 docker exec -it [CONTAINER ID] bash
+docker exec -it 2900660305c1 bash
 ```
 
 Ejemplo 
@@ -23,7 +24,7 @@ CONTAINER ID   IMAGE             COMMAND                  CREATED        STATUS 
 
 docker exec -it 987abc3463d8 bash 
 
-psql -U postgres -d dbhito2
+psql -U postgres -d dbhito3
 ````
 
 cargar script con creacion y carga de datos que se encuentra en ./data/ddl.sql
@@ -63,10 +64,4 @@ Metodo para eliminar usuario
 
 ![Delete Users](./images/delete%20user.png)
 
-![Get User Final](./images/userFinal.png)
-
-
-
-
-
-
+![Get User Final](./images/use
