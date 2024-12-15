@@ -1,0 +1,113 @@
+{
+  "name": "desafio",
+  "version": "1",
+  "items": [
+    {
+      "type": "http",
+      "name": "Crear Usuario",
+      "seq": 3,
+      "request": {
+        "url": "http://localhost:3000/api/v1/user",
+        "method": "POST",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\n    \"email\": \"daniel-rojas@test.com\",\n    \"password\": \"1234\",\n    \"fullName\": \"Daniel Rojas Lopez\",\n    \"profile\": \"Administrador\"\n  }",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Eliminar Usuario",
+      "seq": 4,
+      "request": {
+        "url": "http://localhost:3000/api/v1/user/955ff84a-d3b0-4aeb-84a0-d6874c41f0d6",
+        "method": "DELETE",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Obtener Usuario",
+      "seq": 2,
+      "request": {
+        "url": "http://localhost:3000/api/v1/users",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Obtener por email",
+      "seq": 5,
+      "request": {
+        "url": "http://localhost:3000/api/v1/user/email/daniel@test.com",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    }
+  ],
+  "environments": [],
+  "brunoConfig": {
+    "version": "1",
+    "name": "desafio",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ]
+  }
+}
