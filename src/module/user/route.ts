@@ -11,6 +11,9 @@ route.get("/", userController.getUsers);
 // leer un único usuario por id
 route.get("/:id", userController.getUser);
 
+// leer usuario por email 
+route.get("/email/:email", userController.getUserbyEmail);
+
 // crear un usuario
 route.post("/", userController.createUser);
 

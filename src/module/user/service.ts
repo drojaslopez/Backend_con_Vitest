@@ -32,6 +32,11 @@ const getUseById = async (id: string) => {
     return users;
 };
 
+const getUseByEmail = async (id: string) => {
+  const users = await UserModel.findByEmail(id);
+  return users;
+};
+
 const getUsers = async () => {
   const users = await UserModel.findAll();
   return users;
@@ -76,6 +81,7 @@ const deleteUser = async (id: string) => {
 export const userService = {
   createUser,
   getUseById,
+  getUseByEmail,
   getUsers,
   updateUser,
   deleteUser,
