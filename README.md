@@ -2,13 +2,13 @@
 ## Daniel_Rojas
 
 Para ejecutar el projecto inicialmente se debe levantar primero el contenedor de docker
-```cmd
+```bash
 docker-compose.yml
 
 docker-compose up -d
 ```
 con el contenedor andando debemos levantar la bd 
-```cmd
+```bash
 docker ps
 
 docker exec -it [CONTAINER ID] bash
@@ -16,7 +16,7 @@ docker exec -it 2900660305c1 bash
 ```
 
 Ejemplo 
-```cmd
+```bash
 docker ps
 
 CONTAINER ID   IMAGE             COMMAND                  CREATED        STATUS             PORTS                    NAMES
@@ -25,7 +25,7 @@ CONTAINER ID   IMAGE             COMMAND                  CREATED        STATUS 
 docker exec -it 987abc3463d8 bash 
 
 psql -U postgres -d dbhito3
-````
+```
 
 cargar script con creacion y carga de datos que se encuentra en ./data/ddl.sql
 
@@ -35,7 +35,7 @@ ahora ya se podra ejecutar el proyecto con los siguientes comandos
 npm i
 
 npm run dev
-````
+```
 
 npm install -D vitest
 
