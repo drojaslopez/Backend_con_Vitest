@@ -1,6 +1,5 @@
 import { User } from "./interfaces";
 import { pool } from "../../database/db";
-import e from "express";
 
 const findAll = async () => {
 
@@ -16,6 +15,21 @@ const findOneById = async (id: string) => {
     WHERE id = $1
     `,
     values: [id],
+  };
+
+  const { rows } = await pool.query(query);
+
+  return rows[0] as User; // ORM
+};
+
+const findByEmail = async (email: string) => {
+  // Datos parametrizados
+  const query = {
+    text: `
+    SELECT * FROM USERS
+    WHERE email = $1
+    `,
+    values: [email],
   };
 
   const { rows } = await pool.query(query);
@@ -77,6 +91,7 @@ const remove = async (id: string) => {
 export const UserModel = {
   create,
   findOneById,
+  findByEmail,
   findAll,
   update,
   remove

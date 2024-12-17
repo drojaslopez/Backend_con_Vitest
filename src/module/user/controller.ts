@@ -16,6 +16,21 @@ const getUser = async (req: Request, res: Response) => {
   }
 };
 
+const getUserbyEmail = async (req: Request, res: Response) => {
+  try {
+    const { email } = req.params;
+    const user = await userService.getUseByEmail(email);
+    if (!user) {
+      res.status(404).json({ message: "User not found" });
+    } else {
+      res.json(user);
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
 const getUsers = async (req: Request, res: Response) => {
   try {
     const user = await userService.getUsers();
@@ -84,6 +99,7 @@ const deleteUser = async (req: Request, res: Response) => {
 
 export const userController = {
   getUser,
+  getUserbyEmail,
   getUsers,
   createUser,
   updateUser,
