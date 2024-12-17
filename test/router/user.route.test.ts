@@ -3,45 +3,70 @@ import request from "supertest";
 import app from "../../app";
 
 vi.mock("../../src/module/user/model", () =>{
-   return{
-    UserModel:{
-      /* findAll: vi.fn(async => []), */
-      findOneById: vi.fn((request , response, next) =>{
-        request.id="7dbc1138-8e6c-473d-8350-a51ea0575457";
-        next();
-      })
-
-      /* findByEmail: vi.fn((request , response, next) =>{
-        request.email="daniel@test.com";
-        next();
-      }) */
-    }
+  return{
+   UserModel:{     
+    findAll: vi.fn(async () => [
+      {
+        "id": "fe0989f7-acac-4c35-87a4-1221555adae7",
+        "email": "test1@test.com",
+        "password": "1234",
+        "fullname": "Test User 1",
+        "profile": "Administrador"
+    },
+    {
+        "id": "04eb6627-055a-4d07-936f-1ef60a5408bf",
+        "email": "daniel2@drl.cl",
+        "password": "$2a$10$mAriFOJ0/qrmJaePTWXwdOqPes4rtQ9NAHXiRa8iQy1gyxrP.XRKG",
+        "fullname": "Daniel Rojas",
+        "profile": "Usuario"
+    },
+    ]),
+    findOneById:vi.fn(async (id) => {
+      return { 
+        "id": "04eb6627-055a-4d07-936f-1ef60a5408bf",
+        "email": "daniel2@drl.cl",
+        "password": "$2a$10$mAriFOJ0/qrmJaePTWXwdOqPes4rtQ9NAHXiRa8iQy1gyxrP.XRKG",
+        "fullname": "Daniel Rojas",
+        "profile": "Usuario"
+    };
+    }),
+    findByEmail: vi.fn(async (id) => {
+      return { 
+        "id": "04eb6627-055a-4d07-936f-1ef60a5408bf",
+        "email": "daniel@test.com",
+        "password": "$2a$10$mAriFOJ0/qrmJaePTWXwdOqPes4rtQ9NAHXiRa8iQy1gyxrP.XRKG",
+        "fullname": "Daniel Rojas",
+        "profile": "Usuario"
+    };
+    })
    }
+  }
 })
 
+describe("GET /user", () => {
+  it("should return users", async () => {
+   const {status, body} = await request(app).get("/api/v1/user");
+   console.log(body);
+   expect(status).toBe(200)
+  });
+}); 
 
-describe("GET /user/email", () => {
- /*  it("should return users", async () => {
-    const {status, body} = await request(app).get("/api/v1/user");
-    console.log(body);
-    expect(status).toBe(200)
-  }); */
-
-    it("should return users", async () => {
-    const {status, body} = await request(app)
-    .get("/api/v1/user/")    
-    .query({ id: '7dbc1138-8e6c-473d-8350-a51ea0575457' });
-
-    console.log(body);
-    expect(status).toBe(200)
+describe("GET /user/id", () => {
+  it("should return users", async () => {
+  const userID = "04eb6627-055a-4d07-936f-1ef60a5408bf";
+  const {status, body} = await request(app).get(`/api/v1/user/${userID}`);
+  console.log(body);
+  expect(status).toBe(200)   
+  expect(body.id).toBe(userID);
   }); 
+}); 
 
- /*  it("should return users by Email", async () => {
-    const {status, body, } = await request(app)
-    .get("/api/v1/user/email/")
-    console.log(body);
-    expect(status).toBe(200)
-  }); */
-
-
+describe("GET /user/email", () => {  
+      it("should return users", async () => {
+      const userEmail = "daniel@test.com";
+      const {status, body} = await request(app).get(`/api/v1/user/email/${userEmail}`);
+      console.log(body);
+      expect(status).toBe(200)
+      expect(body.email).toBe(userEmail);
+    }); 
 });
